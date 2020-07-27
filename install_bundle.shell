@@ -1,0 +1,17 @@
+# create bundle folder
+# move this file to bundle folder
+
+git clone git@github.com:preservim/nerdtree.git
+
+git clone https://github.com/vim-airline/vim-airline-themes.git
+
+git clone https://github.com/vim-airline/vim-airline-themes ~/.vim/bundle/vim-airline-themes
+
+git clone https://github.com/mattn/emmet-vim.git
+
+git clone https://github.com/pangloss/vim-javascript.git
+
+git clone https://github.com/skammer/vim-css-color.git
+
+git clone https://github.com/plasticboy/vim-markdown.git
+npm -g install instant-markdown-d

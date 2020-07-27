@@ -66,7 +66,7 @@ let &guicursor = &guicursor . ",a:blinkon0"
 
 "basic setting
 
-set noerrorbells
+inoremap jk <esc>
 
 "leader
 let mapleader = ","
@@ -167,12 +167,67 @@ set fillchars=stl:/
 
 set fillchars=stlnc:/
 
+"使用语法高亮定义代码折叠
+set foldmethod=syntax
+"打开文件是默认不折叠代码
+set foldlevelstart=99
+
 " nerdtree
 
 nnoremap <c-t> :NERDTree<enter>
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " pathogen
 
 call pathogen#infect()
 syntax on
 filetype plugin indent on
+
+" vim-plug
+
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+Plug 'junegunn/vim-easy-align'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" Initialize plugin system
+call plug#end()
+
+
+" vim jsx typescirpt
+set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+" dark red
+hi tsxTagName guifg=#E06C75
+hi tsxComponentName guifg=#E06C75
+hi tsxCloseComponentName guifg=#E06C75
+
+" orange
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxCloseTagName guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+
+" yellow
+hi tsxAttrib guifg=#F8BD7F cterm=italic
+
+" light-grey
+hi tsxTypeBraces guifg=#999999
+" dark-grey
+hi tsxTypes guifg=#666666
+
+
+
